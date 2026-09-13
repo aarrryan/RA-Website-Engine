@@ -14,44 +14,73 @@ import { AnnouncementsPage } from './pages/AnnouncementsPage';
 export default function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename="/RA-Website-Engine">
         <Routes>
           <Route path="/login" element={<LoginScreen />} />
-          <Route path="/" element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          } />
-          <Route path="/timetable" element={
-            <ProtectedRoute>
-              <TimetablePage />
-            </ProtectedRoute>
-          } />
-          <Route path="/calendar" element={
-            <ProtectedRoute>
-              <CalendarPage />
-            </ProtectedRoute>
-          } />
-          <Route path="/evaluations" element={
-            <ProtectedRoute>
-              <EvaluationsPage />
-            </ProtectedRoute>
-          } />
-          <Route path="/labs" element={
-            <ProtectedRoute>
-              <LabsPage />
-            </ProtectedRoute>
-          } />
-          <Route path="/resources" element={
-            <ProtectedRoute>
-              <ResourcesPage />
-            </ProtectedRoute>
-          } />
-          <Route path="/announcements" element={
-            <ProtectedRoute>
-              <AnnouncementsPage />
-            </ProtectedRoute>
-          } />
+
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/timetable"
+            element={
+              <ProtectedRoute>
+                <TimetablePage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/calendar"
+            element={
+              <ProtectedRoute>
+                <CalendarPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/evaluations"
+            element={
+              <ProtectedRoute>
+                <EvaluationsPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/labs"
+            element={
+              <ProtectedRoute>
+                <LabsPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/resources"
+            element={
+              <ProtectedRoute>
+                <ResourcesPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/announcements"
+            element={
+              <ProtectedRoute>
+                <AnnouncementsPage />
+              </ProtectedRoute>
+            }
+          />
+
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
