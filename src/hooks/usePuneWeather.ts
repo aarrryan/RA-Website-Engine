@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import type { PuneWeather } from '../types/weather';
 import { fetchPuneWeather } from '../services/weatherService';
 
-const REFRESH_INTERVAL = 15 * 60 * 1000;
+// Refresh live Pune weather every 5 minutes
+const REFRESH_INTERVAL = 5 * 60 * 1000;
 
 export function usePuneWeather() {
   const [weather, setWeather] = useState<PuneWeather | null>(null);
@@ -23,7 +24,10 @@ export function usePuneWeather() {
           `[RA WEATHER] ${result.location} | ${result.description} | ${result.temperature}°C | ${result.isDay ? 'DAY' : 'NIGHT'} | ${result.visual}`
         );
       } catch (error) {
-        console.error('[RA WEATHER] Unable to load Pune weather:', error);
+        console.error(
+          '[RA WEATHER] Unable to load Pune weather:',
+          error
+        );
       } finally {
         if (mounted) {
           setLoading(false);
@@ -31,8 +35,10 @@ export function usePuneWeather() {
       }
     };
 
+    // Fetch immediately when the application loads
     loadWeather();
 
+    // Refresh every 5 minutes
     const interval = window.setInterval(
       loadWeather,
       REFRESH_INTERVAL
